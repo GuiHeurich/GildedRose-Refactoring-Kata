@@ -4,21 +4,12 @@ class GildedRose
     @items = items
   end
 
-  def update_quality()
+  def update_item()
     @items.each do |item|
       return if item.name == "Sulfuras, Hand of Ragnaros"
-
-      if item.name == "general item"
-        return update_general_item(item)
-      end
-
-      if item.name == "Backstage passes to a TAFKAL80ETC concert"
-        return update_backstage_passes(item)
-      end
-
-      if item.name == "Aged Brie"
-        return update_aged_brie(item)
-      end
+      return update_general_item(item) if item.name == "general item"
+      return update_backstage_passes(item) if item.name == "Backstage passes to a TAFKAL80ETC concert"
+      return update_aged_brie(item) if item.name == "Aged Brie"
     end
   end
 

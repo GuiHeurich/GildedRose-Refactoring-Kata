@@ -2,11 +2,11 @@ require File.join(File.dirname(__FILE__), 'gilded_rose')
 
 describe GildedRose do
 
-  describe "#update_quality" do
+  describe "#update_item" do
 
     it "does not change the name" do
       items = [Item.new("foo", 0, 0)]
-      GildedRose.new(items).update_quality()
+      GildedRose.new(items).update_item()
       expect(items[0].name).to eq "foo"
     end
 
@@ -16,12 +16,12 @@ describe GildedRose do
       }
 
       it "reduces quality by one" do
-        GildedRose.new(subject).update_quality()
+        GildedRose.new(subject).update_item()
         expect(subject[0].quality).to eq 4
       end
 
       it "reduces quality by one" do
-        GildedRose.new(subject).update_quality()
+        GildedRose.new(subject).update_item()
         expect(subject[0].sell_in).to eq 9
       end
 
@@ -31,7 +31,7 @@ describe GildedRose do
         }
 
         it "doesn't go negative" do
-          GildedRose.new(subject).update_quality()
+          GildedRose.new(subject).update_item()
           expect(subject[0].quality).to eq 0
         end
       end
@@ -42,7 +42,7 @@ describe GildedRose do
         }
 
         it "doesn't go over 50" do
-          GildedRose.new(subject).update_quality()
+          GildedRose.new(subject).update_item()
           expect(subject[0].quality).to be <= 50
         end
       end
@@ -53,7 +53,7 @@ describe GildedRose do
         }
 
         it "reduces quality by two" do
-          GildedRose.new(subject).update_quality()
+          GildedRose.new(subject).update_item()
           expect(subject[0].quality).to eq 2
         end
       end
@@ -65,7 +65,7 @@ describe GildedRose do
       }
 
       it "increases quality value after update" do
-        GildedRose.new(subject).update_quality()
+        GildedRose.new(subject).update_item()
         expect(subject[0].quality).to eq 6
       end
     end
@@ -77,7 +77,7 @@ describe GildedRose do
         }
 
         it "increases quality by 2" do
-          GildedRose.new(subject).update_quality
+          GildedRose.new(subject).update_item
           expect(subject[0].quality).to eq 10
         end
       end
@@ -88,7 +88,7 @@ describe GildedRose do
         }
 
         it "increases quality by 3" do
-          GildedRose.new(subject).update_quality
+          GildedRose.new(subject).update_item
           expect(subject[0].quality).to eq 11
         end
       end
@@ -99,7 +99,7 @@ describe GildedRose do
         }
 
         it "quality value is zero" do
-          GildedRose.new(subject).update_quality
+          GildedRose.new(subject).update_item
           expect(subject[0].quality).to eq 0
         end
       end
@@ -111,12 +111,12 @@ describe GildedRose do
       }
 
       it "sell_in value does not decrease" do
-        GildedRose.new(subject).update_quality()
+        GildedRose.new(subject).update_item()
         expect(subject[0].sell_in).to eq 3
       end
 
       it "quality value does not decrease" do
-        GildedRose.new(subject).update_quality()
+        GildedRose.new(subject).update_item()
         expect(subject[0].quality).to eq 5
       end
     end
