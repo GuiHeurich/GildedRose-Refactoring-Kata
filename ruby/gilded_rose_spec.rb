@@ -20,7 +20,7 @@ describe GildedRose do
         expect(subject[0].quality).to eq 4
       end
 
-      it "reduces quality by one" do
+      it "reduces sell_in by one" do
         GildedRose.new(subject).update_item()
         expect(subject[0].sell_in).to eq 9
       end
@@ -69,6 +69,11 @@ describe GildedRose do
         expect(subject[0].quality).to eq 6
       end
 
+      it "reduces sell_in by one" do
+        GildedRose.new(subject).update_item()
+        expect(subject[0].sell_in).to eq 2
+      end
+
       context "when quality is fifty" do
         let(:subject) {
           [Item.new("Aged Brie", 10, 50)]
@@ -82,6 +87,15 @@ describe GildedRose do
     end
 
     context "Backstage passes to a TAFKAL80ETC concert Item" do
+      let(:subject) {
+        [Item.new("Backstage passes to a TAFKAL80ETC concert", 7, 8)]
+      }
+
+      it "reduces sell_in by one" do
+        GildedRose.new(subject).update_item()
+        expect(subject[0].sell_in).to eq 6
+      end
+
       context "when sell_in value is 10 or less" do
         let(:subject) {
           [Item.new("Backstage passes to a TAFKAL80ETC concert", 7, 8)]

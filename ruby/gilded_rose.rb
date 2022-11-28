@@ -28,11 +28,13 @@ class GildedRose
     elsif item.sell_in <= 10
       item.quality += 2
     end
+    item.sell_in -= 1
     return item.quality = 50 if item.quality >= 50
   end
 
   def update_aged_brie(item)
     item.quality += 1 unless item.quality == 50
+    item.sell_in -= 1
   end
 end
 
