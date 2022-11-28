@@ -49,7 +49,7 @@ describe GildedRose do
 
       context "when sell_in less than zero" do
         let(:subject) {
-          [Item.new("general item", 0, 4)]
+          [Item.new("general item", -1, 4)]
         }
 
         it "reduces quality by two" do
