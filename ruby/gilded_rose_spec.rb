@@ -68,6 +68,17 @@ describe GildedRose do
         GildedRose.new(subject).update_item()
         expect(subject[0].quality).to eq 6
       end
+
+      context "when quality is fifty" do
+        let(:subject) {
+          [Item.new("Aged Brie", 10, 50)]
+        }
+
+        it "doesn't go over 50" do
+          GildedRose.new(subject).update_item()
+          expect(subject[0].quality).to be <= 50
+        end
+      end
     end
 
     context "Backstage passes to a TAFKAL80ETC concert Item" do
@@ -101,6 +112,17 @@ describe GildedRose do
         it "quality value is zero" do
           GildedRose.new(subject).update_item
           expect(subject[0].quality).to eq 0
+        end
+      end
+
+      context "when quality is near fifty" do
+        let(:subject) {
+          [Item.new("Backstage passes to a TAFKAL80ETC concert", 10, 49)]
+        }
+
+        it "doesn't go over 50" do
+          GildedRose.new(subject).update_item()
+          expect(subject[0].quality).to be <= 50
         end
       end
     end
