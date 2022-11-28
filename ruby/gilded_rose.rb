@@ -6,6 +6,8 @@ class GildedRose
 
   def update_quality()
     @items.each do |item|
+      return if item.name == "Sulfuras, Hand of Ragnaros"
+
       if item.name == "general item"
         return update_general_item(item)
       end
